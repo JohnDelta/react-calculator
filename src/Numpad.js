@@ -1,4 +1,5 @@
 import React from 'react';
+import getDefaultNumpad from './getDefaultNumpad';
 
 class Numpad extends React.Component {
 	constructor(props) {
@@ -6,23 +7,22 @@ class Numpad extends React.Component {
 	}
 	
 	render() {
-		
-		let numpads = [];
-		for(let i = 0; i < 10; i++) {
-			numpads.push(
-				<button 
-					key={"numpad"+i}
-					id={"numpad"+i}
-					value={i}
-					dangerouslySetInnerHTML={{__html : i}}
+		let numpad = getDefaultNumpad();
+		let keyboard = [];
+		numpad.forEach( (item,index) => {
+			keyboard.push(
+				<button
+					key={item.id}
+					id={item.id}
+					value={item.value}
+					dangerouslySetInnerHTML={{__html : item.symbol}}
 				/>
 			);
-		}
+		});
 		
 		return(
 			<div className="Numpad">
-				{numpads}
-				
+				{keyboard}	
 			</div>
 		);
 	}
