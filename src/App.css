@@ -8,56 +8,113 @@
 }
 
 .Display {
-	
 	color : #000;
 	background-color : #000000;
-	display : grid;
-	grid-template-columns : repeat(18,1fr);
-	grid-gap : 2px;
+	display : flex;
+	flex-direction:row-reverse;
+	align-items : flex-end;
+	color : #FFFFFF;
 }
 
 .value {
-	background-color : white;
+	font-family : monospace;
+	font-size : 2em;
 }
 
 .cursor {
-	background-color : white;
+	animation : cursorToggle 1s infinite;
+}
+
+@keyframes cursorToggle {
+	from {
+		opacity : 1;
+	}
+	to {
+		opacity : 0;
+	}
 }
 
 .Numpad {
 	display : grid;
-	grid-template-columns : repeat(4,25%);
-	grid-template-rows : repeat(5,20%);
-	justify-content : center;
-}
-
-#numpad1, #numpad2, #numpad3 {
-	grid-row : 3;
-}
-
-#numpad4, #numpad5, #numpad6 {
-	grid-row : 2;
-}
-
-#numpad7, #numpad8, #numpad9 {
-	grid-row : 1;
-}
-
-#numpadPlus, #numpadMinus, #numpadMultiply, #numpadDivide {
-	grid-column : 4;
-}
-
-#numpadDot {
-	grid-column : 3/4;
-	grid-row : 4;
+	grid-template-areas :
+		'. . numpadLeftArrow numpadRightArrow'
+		'numpad7 numpad8 numpad9 numpadPlus'
+		'numpad4 numpad5 numpad6 numpadMinus'
+		'numpad1 numpad2 numpad3 numpadMultiply'
+		'numpad0 numpad0 numpadDot numpadDivide'
+		'. . numpadEval numpadEval'
 }
 
 #numpad0 {
-	grid-row : 4;
-	grid-column : 1/3;
+	grid-area : numpad0;
+}
+
+#numpad1 {
+	grid-area : numpad1;
+}
+
+#numpad2 {
+	grid-area : numpad2;
+}
+
+#numpad3 {
+	grid-area : numpad3;
+}
+
+#numpad4 {
+	grid-area : numpad4;
+}
+
+#numpad5 {
+	grid-area : numpad5;
+}
+
+#numpad6 {
+	grid-area : numpad6;
+}
+
+#numpad7 {
+	grid-area : numpad7;
+}
+
+#numpad8 {
+	grid-area : numpad8;
+}
+
+#numpad9 {
+	grid-area : numpad9;
+}
+
+#numpadPlus {
+	grid-area : numpadPlus;
+}
+
+#numpadMinus {
+	grid-area : numpadMinus;
+} 
+
+#numpadMultiply {
+	grid-area : numpadMultiply;
+}
+
+#numpadDivide {
+	grid-area : numpadDivide;
+}
+
+#numpadLeftArrow {
+	grid-area : numpadLeftArrow;
+}
+
+#numpadRightArrow {
+	grid-area : numpadRightArrow;
+}
+
+#numpadDot {
+	grid-area : numpadDot;
 }
 
 #numpadEval {
-	grid-row : 5;
-	grid-column : 3/5;;
+	grid-area : numpadEval;
 }
+
+

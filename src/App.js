@@ -10,13 +10,29 @@ class App extends React.Component {
 			displayText : "",
 			displayCursorPos : 0
 		};
+		this.updateDisplay = this.updateDisplay.bind(this);
+		this.updateCursor = this.updateCursor.bind(this);
 	}
 	
-	componentWillMount() {
+	updateDisplay(data) {
 		this.setState({
-			displayText : "hello",
-			displayCursorPos : this.state.displayText.length-2
+			displayText : data
 		});
+	}
+	
+	// direction : true = right move, false = left
+	updateCursor(direction) {
+		if(direction) {
+			if(this.state.displayCursorPos < this.state.displayText.length)
+				this.setState({
+					displayCursorPos : this.state.displayCursorPos+1
+				});
+		} else {
+			if(this.state.displayCursorPos > 0)
+				this.setState({
+					displayCursorPos : this.state.displayCursorPos-1
+				});
+		}
 	}
 	
 	render() {
@@ -26,7 +42,12 @@ class App extends React.Component {
 					displayText={this.state.displayText}
 					displayCursorPos={this.state.displayCursorPos}
 				/>
-				<Numpad />
+				<Numpad 
+					displayText={this.state.displayText}
+					displayCursorPos={this.state.displayCursorPos}
+					updateCursor={this.updateCursor}
+					updateDisplay={this.updateDisplay}
+				/>
 			</div>
 		);
 	}

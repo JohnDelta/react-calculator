@@ -30,6 +30,16 @@ export default function getDefaultNumpad() {
 				"id" : "numpadEval",
 				"value" : "=",
 				"symbol" : "="
+			},
+			{
+				"id" : "numpadLeftArrow",
+				"value" : "leftArrow",
+				"symbol" : "<-"
+			},
+			{
+				"id" : "numpadRightArrow",
+				"value" : "rightArrow",
+				"symbol" : "->"
 			}
 		];
 	for(let i = 0; i < 10; i++) {
