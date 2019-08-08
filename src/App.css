@@ -8,19 +8,20 @@
 }
 
 .Display {
-	color : #FFFFFF;
+	
+	color : #000;
 	background-color : #000000;
 	display : grid;
-	grid-template-columns : repeat(18,auto);
+	grid-template-columns : repeat(18,1fr);
 	grid-gap : 2px;
 }
 
 .value {
-	
+	background-color : white;
 }
 
 .cursor {
-	
+	background-color : white;
 }
 
 .Numpad {
