@@ -8,10 +8,10 @@ class App extends React.Component {
 		super();
 		this.state = {
 			displayText : "",
-			displayCursorPos : 0
+			cursorPos : 0
 		};
 		this.updateDisplay = this.updateDisplay.bind(this);
-		this.updateCursor = this.updateCursor.bind(this);
+		this.moveCursor = this.moveCursor.bind(this);
 	}
 	
 	updateDisplay(data) {
@@ -20,17 +20,17 @@ class App extends React.Component {
 		});
 	}
 	
-	// direction : true = right move, false = left
-	updateCursor(direction) {
+	// direction : true = left move, false = right
+	moveCursor(direction) {
 		if(direction) {
-			if(this.state.displayCursorPos < this.state.displayText.length)
+			if(this.state.cursorPos > 0)
 				this.setState({
-					displayCursorPos : this.state.displayCursorPos+1
+					cursorPos : this.state.cursorPos-1
 				});
 		} else {
-			if(this.state.displayCursorPos > 0)
+			if(this.state.cursorPos < this.state.displayText.length)
 				this.setState({
-					displayCursorPos : this.state.displayCursorPos-1
+					cursorPos : this.state.cursorPos+1
 				});
 		}
 	}
@@ -40,12 +40,12 @@ class App extends React.Component {
 			<div className="App">
 				<Display 
 					displayText={this.state.displayText}
-					displayCursorPos={this.state.displayCursorPos}
+					cursorPos={this.state.cursorPos}
 				/>
-				<Numpad 
+				<Numpad
+					cursorPos={this.state.cursorPos}
 					displayText={this.state.displayText}
-					displayCursorPos={this.state.displayCursorPos}
-					updateCursor={this.updateCursor}
+					moveCursor={this.moveCursor}
 					updateDisplay={this.updateDisplay}
 				/>
 			</div>

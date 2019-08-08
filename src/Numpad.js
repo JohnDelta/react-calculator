@@ -13,28 +13,26 @@ class Numpad extends React.Component {
 			
 		switch(numpad.value) {
 			case "leftArrow" : 
-				this.props.updateCursor(true);
+				this.props.moveCursor(true);
 				break;
 			case "rightArrow" : 
-				this.props.updateCursor(false);
+				this.props.moveCursor(false);
 				break;
 			default :
-			
+				/*
+					Insert each given value in the position of the cursor.
+					Then, move the cursor one index down(right).
+				*/
+				
 				let previousDisplay = [...this.props.displayText];
-				
-				let left = previousDisplay
-					.slice(0,previousDisplay.length-this.props.displayCursorPos);
-				let current = [numpad.value];
+				let cursorPos = previousDisplay.length - this.props.cursorPos;
+				let left = previousDisplay.slice(0,previousDisplay.length-cursorPos);
+				let current = [numpad.symbol];
 				let right = previousDisplay
-					.slice(previousDisplay.length-this.props.displayCursorPos,previousDisplay.length);
-				
-				let res = [...right, ...current, ...left];
-				
+					.slice(previousDisplay.length-cursorPos,previousDisplay.length);
+				let res = [...left, ...current, ...right];
+				this.props.moveCursor(false);
 				this.props.updateDisplay(res);
-				
-				console.log("left : "+left);
-				console.log("right : "+right);
-				
 				
 				break;
 		}
