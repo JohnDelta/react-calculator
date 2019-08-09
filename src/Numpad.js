@@ -18,20 +18,21 @@ class Numpad extends React.Component {
 			case "rightArrow" : 
 				this.props.moveCursor(false);
 				break;
+			case "reset" :
+				this.props.reset();
+				break;
 			default :
 				/*
 					Insert each given value in the position of the cursor.
 					Then, move the cursor one index down(right).
 				*/
-				
 				let previousDisplay = [...this.props.displayText];
-				let cursorPos = previousDisplay.length - this.props.cursorPos;
-				let left = previousDisplay.slice(0,previousDisplay.length-cursorPos);
+				let left = previousDisplay.slice(0,this.props.cursorPos);
 				let current = [numpad.symbol];
 				let right = previousDisplay
-					.slice(previousDisplay.length-cursorPos,previousDisplay.length);
+					.slice(this.props.cursorPos,previousDisplay.length);
 				let res = [...left, ...current, ...right];
-				this.props.moveCursor(false);
+				this.props.moveCursor(false); //move cursor right
 				this.props.updateDisplay(res);
 				
 				break;

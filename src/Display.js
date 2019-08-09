@@ -7,19 +7,19 @@ class Display extends React.Component {
 	
 	render() {
 		/*
-			In order to display the text with a cursor
-			seperator which can be moved manualy by buttons(from user),
-			(and not use the default text or textarea method)
-			i have to transform the text to an array and each time put a symbol
-			of cursor in the proper position.
-		*/		
+			Transform the text to an array and put a symbol
+			of cursor in the proper position (in the real cursor pos).
+		*/	
 		let text = [...this.props.displayText];
-		let k1 = text.slice(0,this.props.cursorPos);
-		let k2 = ["|"];
-		let k3 = text.slice(this.props.cursorPos,text.length);
+		let cursorPos = this.props.cursorPos;
+		if(cursorPos > text.length) cursorPos = text.length;
 		
+		let k1 = text.slice(0,cursorPos);
+		let k2 = ["|"];
+		let k3 = text.slice(cursorPos,text.length);
+
 		let res = [...k1,...k2,...k3].map( (item,index) => {
-			if(index !== this.props.cursorPos)
+			if(index !== cursorPos)
 				return <div key={"value"+index} className="value">{item}</div>;
 			else
 				return <div key={"value"+index} className="cursor">{item}</div>;

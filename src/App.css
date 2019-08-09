@@ -39,7 +39,7 @@
 .Numpad {
 	display : grid;
 	grid-template-areas :
-		'. . numpadLeftArrow numpadRightArrow'
+		'numpadReset numpadReset numpadLeftArrow numpadRightArrow'
 		'numpad7 numpad8 numpad9 numpadPlus'
 		'numpad4 numpad5 numpad6 numpadMinus'
 		'numpad1 numpad2 numpad3 numpadMultiply'
@@ -117,6 +117,10 @@
 
 #numpadEval {
 	grid-area : numpadEval;
+}
+
+#numpadReset {
+	grid-area : numpadReset;
 }
 
 

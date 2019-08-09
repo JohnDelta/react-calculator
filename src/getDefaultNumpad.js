@@ -40,6 +40,11 @@ export default function getDefaultNumpad() {
 				"id" : "numpadRightArrow",
 				"value" : "rightArrow",
 				"symbol" : "->"
+			},
+			{
+				"id" : "numpadReset",
+				"value" : "reset",
+				"symbol" : "reset"
 			}
 		];
 	for(let i = 0; i < 10; i++) {
