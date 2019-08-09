@@ -26,10 +26,14 @@ class Display extends React.Component {
 		});
 
 		return(
-			<div 
-				className="Display"
-			>
-				{res}
+			<div className="Display">
+				<div className="input">
+					{res}
+				</div>
+				<div
+					className="answer"
+					dangerouslySetInnerHTML={{__html : "ans : 20"}}
+				/>
 			</div>
 		);
 	}

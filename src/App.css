@@ -5,16 +5,18 @@
 	display : grid;
 	grid-template-rows : 40% 60%;
 	grid-template-columns : 100%;
+	background-color : black;
 }
 
 .Display {
-	color : #000;
-	background-color : #000000;
-	display : flex;
-	flex-direction:row;
-	align-items : flex-end;
+	background-color : blue;
 	color : #FFFFFF;
-	justify-content : flex-end;
+	
+}
+
+.input {
+	background-color : red;
+	overflow-y : scroll;
 }
 
 .value {
@@ -27,6 +29,10 @@
 	animation : cursorToggle 1s infinite;
 }
 
+.answer {
+	justify-content : end;
+}
+
 @keyframes cursorToggle {
 	from {
 		opacity : 1;
@@ -37,6 +43,7 @@
 }
 
 .Numpad {
+	height : 100%;
 	display : grid;
 	grid-template-areas :
 		'numpadReset numpadReset numpadLeftArrow numpadRightArrow'
