@@ -9,14 +9,21 @@
 }
 
 .Display {
-	background-color : blue;
 	color : #FFFFFF;
-	
+	display : grid;
+	grid-template-columns : 100%;
+	grid-template-rows : auto auto;
+	align-items : end;
+	align-content : end;
 }
 
 .input {
-	background-color : red;
+	max-height : 100%;
 	overflow-y : scroll;
+	display : flex;
+	align-items : flex-end;
+	justify-content : flex-end;
+	flex-wrap : wrap;
 }
 
 .value {
@@ -25,12 +32,13 @@
 }
 
 .cursor {
+	
 	font-size : 2em;
 	animation : cursorToggle 1s infinite;
 }
 
 .answer {
-	justify-content : end;
+	background-color : gray;
 }
 
 @keyframes cursorToggle {
