@@ -73,6 +73,10 @@
 	outline : none;
 }
 
+.Numpad button i {
+	pointer-events : none;
+}
+
 .number {
 	background-color : white;
 }

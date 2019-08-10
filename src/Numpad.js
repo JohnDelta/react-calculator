@@ -32,7 +32,7 @@ class Numpad extends React.Component {
 				*/
 				let previousDisplay = [...this.props.displayText];
 				let left = previousDisplay.slice(0,this.props.cursorPos);
-				let current = [numpad.value];
+				let current = [numpad.symbol];
 				let right = previousDisplay
 					.slice(this.props.cursorPos,previousDisplay.length);
 				let res = [...left, ...current, ...right];
@@ -51,7 +51,7 @@ class Numpad extends React.Component {
 					key={item.id+index}
 					id={item.id}
 					onClick={this.handleClick}
-					className={item.class}
+					className={item.class} 
 				>
 					{item.symbol}
 				</button>

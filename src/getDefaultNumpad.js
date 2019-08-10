@@ -6,25 +6,25 @@ export default function getDefaultNumpad() {
 			{
 				"id" : "numpadPlus",
 				"value" : "+",
-				"symbol" : "+",
+				"symbol" : <i className="fa fa-plus" />,
 				"class" : "operator"
 			},
 			{
 				"id" : "numpadMinus",
 				"value" : "-",
-				"symbol" : "-",
+				"symbol" : <i className="fa fa-minus" />,
 				"class" : "operator"
 			},
 			{
 				"id" : "numpadMultiply",
 				"value" : "*",
-				"symbol" : "*",
+				"symbol" : <i className="fa fa-times" />,
 				"class" : "operator"
 			},
 			{
 				"id" : "numpadDivide",
 				"value" : "/",
-				"symbol" : "/",
+				"symbol" : <i className="fa fa-divide" />,
 				"class" : "operator"
 			},
 			{
@@ -42,13 +42,13 @@ export default function getDefaultNumpad() {
 			{
 				"id" : "numpadLeftArrow",
 				"value" : "leftArrow",
-				"symbol" : "<-",
+				"symbol" : <i className="fa fa-arrow-left" />,
 				"class" : "operator"
 			},
 			{
 				"id" : "numpadRightArrow",
 				"value" : "rightArrow",
-				"symbol" : "->",
+				"symbol" : <i className="fa fa-arrow-right" />,
 				"class" : "operator"
 			},
 			{
