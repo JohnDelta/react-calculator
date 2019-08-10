@@ -4,13 +4,17 @@ import getDefaultNumpad from './getDefaultNumpad';
 class Numpad extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			numpads : [...getDefaultNumpad()]
+		};
 		this.handleClick = this.handleClick.bind(this);
 	}
 	
 	handleClick(e) {
-		let numpad = getDefaultNumpad()
-			.filter(item => item.id === e.target.id)[0];
-			
+		let numpad = this.state.numpads.filter( (item) => {
+			if(item.id === e.target.id) return item;
+		})[0];
+		
 		switch(numpad.value) {
 			case "leftArrow" : 
 				this.props.moveCursor(true);
@@ -28,7 +32,7 @@ class Numpad extends React.Component {
 				*/
 				let previousDisplay = [...this.props.displayText];
 				let left = previousDisplay.slice(0,this.props.cursorPos);
-				let current = [numpad.symbol];
+				let current = [numpad.value];
 				let right = previousDisplay
 					.slice(this.props.cursorPos,previousDisplay.length);
 				let res = [...left, ...current, ...right];
@@ -40,17 +44,17 @@ class Numpad extends React.Component {
 	}
 	
 	render() {
-		let numpad = getDefaultNumpad();
 		let keyboard = [];
-		numpad.forEach( (item,index) => {
+		this.state.numpads.forEach( (item,index) => {
 			keyboard.push(
 				<button
-					key={item.id}
+					key={item.id+index}
 					id={item.id}
-					value={item.value}
 					onClick={this.handleClick}
-					dangerouslySetInnerHTML={{__html : item.symbol}}
-				/>
+					className={item.class}
+				>
+					{item.symbol}
+				</button>
 			);
 		});
 		

@@ -1,20 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One|Nova+Square|Press+Start+2P&display=swap');
+
+/*
+	font-family: 'Press Start 2P', cursive; - display output
+	font-family: 'Black Ops One', cursive; - buttons
+	font-family: 'Nova Square', cursive; - Author - credits
+*/
+
 .App {
-	margin : auto;
+	overflow : hidden;
 	width : 100vw;
 	height : 100vh;
 	display : grid;
 	grid-template-rows : 40% 60%;
-	grid-template-columns : 100%;
 	background-color : black;
+	grid-row-gap : 4px;
 }
 
 .Display {
 	color : #FFFFFF;
 	display : grid;
-	grid-template-columns : 100%;
 	grid-template-rows : auto auto;
 	align-items : end;
 	align-content : end;
+	font-family: 'Press Start 2P', cursive;
 }
 
 .input {
@@ -27,18 +35,13 @@
 }
 
 .value {
-	font-family : monospace;
-	font-size : 2em;
 }
 
 .cursor {
-	
-	font-size : 2em;
 	animation : cursorToggle 1s infinite;
 }
 
 .answer {
-	background-color : gray;
 }
 
 @keyframes cursorToggle {
@@ -59,7 +62,24 @@
 		'numpad4 numpad5 numpad6 numpadMinus'
 		'numpad1 numpad2 numpad3 numpadMultiply'
 		'numpad0 numpad0 numpadDot numpadDivide'
-		'. . numpadEval numpadEval'
+		'. . numpadEval numpadEval';
+	grid-gap : 2px;
+}
+
+.Numpad button {
+	font-size : 1.2em;
+	border : none;
+	font-family: 'Black Ops One', cursive;
+	outline : none;
+}
+
+.number {
+	background-color : white;
+}
+
+.operator {
+	background-color : gray;
+	color : white;
 }
 
 #numpad0 {

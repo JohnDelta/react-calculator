@@ -1,50 +1,61 @@
+import React from 'react';
+
 export default function getDefaultNumpad() {
 	let numpad =
 		[
 			{
 				"id" : "numpadPlus",
 				"value" : "+",
-				"symbol" : "+"
+				"symbol" : "+",
+				"class" : "operator"
 			},
 			{
 				"id" : "numpadMinus",
 				"value" : "-",
-				"symbol" : "-"
+				"symbol" : "-",
+				"class" : "operator"
 			},
 			{
 				"id" : "numpadMultiply",
 				"value" : "*",
-				"symbol" : "x"
+				"symbol" : "*",
+				"class" : "operator"
 			},
 			{
 				"id" : "numpadDivide",
 				"value" : "/",
-				"symbol" : "/"
+				"symbol" : "/",
+				"class" : "operator"
 			},
 			{
 				"id" : "numpadDot",
 				"value" : ".",
-				"symbol" : "."
+				"symbol" : ".",
+				"class" : "operator"
 			},
 			{
 				"id" : "numpadEval",
 				"value" : "=",
-				"symbol" : "="
+				"symbol" : "=",
+				"class" : "operator"
 			},
 			{
 				"id" : "numpadLeftArrow",
 				"value" : "leftArrow",
-				"symbol" : "<-"
+				"symbol" : "<-",
+				"class" : "operator"
 			},
 			{
 				"id" : "numpadRightArrow",
 				"value" : "rightArrow",
-				"symbol" : "->"
+				"symbol" : "->",
+				"class" : "operator"
 			},
 			{
 				"id" : "numpadReset",
 				"value" : "reset",
-				"symbol" : "reset"
+				"symbol" : "reset",
+				"class" : "operator"
 			}
 		];
 	for(let i = 0; i < 10; i++) {
@@ -52,7 +63,8 @@ export default function getDefaultNumpad() {
 			{
 				"id" : "numpad"+i,
 				"value" : i,
-				"symbol" : i
+				"symbol" : i,
+				"class" : "number"
 			}
 		);
 	}
