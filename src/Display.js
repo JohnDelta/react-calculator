@@ -32,7 +32,7 @@ class Display extends React.Component {
 				</div>
 				<div
 					className="answer"
-					dangerouslySetInnerHTML={{__html : "ans : 20"}}
+					dangerouslySetInnerHTML={{__html : "ans : "+this.props.ans}}
 				/>
 			</div>
 		);

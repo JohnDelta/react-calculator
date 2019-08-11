@@ -17,16 +17,19 @@ class App extends React.Component {
 			/*
 				cursorPos : the position of the cursor.
 			*/
-			cursorPos : 0
+			cursorPos : 0,
+			ans : ""
 		};
 		this.updateDisplay = this.updateDisplay.bind(this);
 		this.moveCursor = this.moveCursor.bind(this);
 		this.reset = this.reset.bind(this);
+		this.updateAns = this.updateAns.bind(this);
 	}
 	
 	reset() {
 		this.setState({
 			displayText : "",
+			ans : "",
 			cursorPos : 0
 		});
 	}
@@ -34,6 +37,12 @@ class App extends React.Component {
 	updateDisplay(data) {
 		this.setState({
 			displayText : data
+		});
+	}
+	
+	updateAns(data) {
+		this.setState({
+			ans : data
 		});
 	}
 	
@@ -60,12 +69,14 @@ class App extends React.Component {
 				<Display 
 					displayText={this.state.displayText}
 					cursorPos={this.state.cursorPos}
+					ans={this.state.ans}
 				/>
 				<Numpad
 					cursorPos={this.state.cursorPos}
 					displayText={this.state.displayText}
 					moveCursor={this.moveCursor}
 					updateDisplay={this.updateDisplay}
+					updateAns={this.updateAns}
 					reset={this.reset}
 				/>
 				<a 
