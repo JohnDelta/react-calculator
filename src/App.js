@@ -68,6 +68,14 @@ class App extends React.Component {
 					updateDisplay={this.updateDisplay}
 					reset={this.reset}
 				/>
+				<a 
+					className="author"
+					href="https://github.com/JohnDelta"
+					rel="noopener noreferrer"
+					target="_blank" 
+					title="visit my site!">
+					By John Delta
+				</a>
 			</div>
 		);
 	}

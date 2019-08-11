@@ -6,25 +6,25 @@ export default function getDefaultNumpad() {
 			{
 				"id" : "numpadPlus",
 				"value" : "+",
-				"symbol" : <i className="fa fa-plus" />,
+				"symbol" : "+",
 				"class" : "operator"
 			},
 			{
 				"id" : "numpadMinus",
 				"value" : "-",
-				"symbol" : <i className="fa fa-minus" />,
+				"symbol" : "-",
 				"class" : "operator"
 			},
 			{
 				"id" : "numpadMultiply",
 				"value" : "*",
-				"symbol" : <i className="fa fa-times" />,
+				"symbol" : "\u00d7",
 				"class" : "operator"
 			},
 			{
 				"id" : "numpadDivide",
 				"value" : "/",
-				"symbol" : <i className="fa fa-divide" />,
+				"symbol" : "\u00f7",
 				"class" : "operator"
 			},
 			{
@@ -37,25 +37,37 @@ export default function getDefaultNumpad() {
 				"id" : "numpadEval",
 				"value" : "=",
 				"symbol" : "=",
-				"class" : "operator"
+				"class" : "bottom-line"
 			},
 			{
 				"id" : "numpadLeftArrow",
 				"value" : "leftArrow",
 				"symbol" : <i className="fa fa-arrow-left" />,
-				"class" : "operator"
+				"class" : "top-line"
 			},
 			{
 				"id" : "numpadRightArrow",
 				"value" : "rightArrow",
 				"symbol" : <i className="fa fa-arrow-right" />,
-				"class" : "operator"
+				"class" : "top-line"
 			},
 			{
 				"id" : "numpadReset",
 				"value" : "reset",
-				"symbol" : "reset",
-				"class" : "operator"
+				"symbol" : "c",
+				"class" : "bottom-line"
+			},
+			{
+				"id" : "numpadLeftBracket",
+				"value" : "(",
+				"symbol" : "(",
+				"class" : "top-line"
+			},
+			{
+				"id" : "numpadRightBracket",
+				"value" : ")",
+				"symbol" : ")",
+				"class" : "top-line"
 			}
 		];
 	for(let i = 0; i < 10; i++) {

@@ -11,18 +11,20 @@
 	width : 100vw;
 	height : 100vh;
 	display : grid;
-	grid-template-rows : 40% 60%;
-	background-color : black;
+	grid-template-rows : 40% 55% auto;
+	background-color : #333333;
 	grid-row-gap : 4px;
 }
 
 .Display {
+	background-color : #000000;
 	color : #FFFFFF;
 	display : grid;
 	grid-template-rows : auto auto;
 	align-items : end;
 	align-content : end;
-	font-family: 'Press Start 2P', cursive;
+	font-family : 'Press Start 2P', cursive;
+	grid-row-gap : 8px;
 }
 
 .input {
@@ -32,6 +34,7 @@
 	align-items : flex-end;
 	justify-content : flex-end;
 	flex-wrap : wrap;
+	font-size : 1.1em;
 }
 
 .value {
@@ -57,20 +60,36 @@
 	height : 100%;
 	display : grid;
 	grid-template-areas :
-		'numpadReset numpadReset numpadLeftArrow numpadRightArrow'
+		'numpadLeftBracket numpadRightBracket numpadLeftArrow numpadRightArrow'
 		'numpad7 numpad8 numpad9 numpadPlus'
 		'numpad4 numpad5 numpad6 numpadMinus'
 		'numpad1 numpad2 numpad3 numpadMultiply'
 		'numpad0 numpad0 numpadDot numpadDivide'
-		'. . numpadEval numpadEval';
+		'numpadReset numpadReset numpadEval numpadEval';
 	grid-gap : 2px;
 }
 
 .Numpad button {
-	font-size : 1.2em;
 	border : none;
 	font-family: 'Black Ops One', cursive;
 	outline : none;
+	cursor : pointer;
+	-webkit-transition-duration : .3s;
+	-moz-transition-duration : .3s;
+	-o-transition-duration : .3s;
+	transition-duration : .3s;
+}
+
+.Numpad button:active {
+	-webkit-transition-duration : .3s;
+	-moz-transition-duration : .3s;
+	-o-transition-duration : .3s;
+	transition-duration : .3s;
+	
+	-webkit-transform : scale(.8);
+	-moz-transform : scale(.8);
+	-o-transform : scale(.8);
+	transform : scale(.8);
 }
 
 .Numpad button i {
@@ -78,12 +97,27 @@
 }
 
 .number {
-	background-color : white;
+	font-size : 1.4em;
+	background-color : #FFFFFF;
+}
+
+.top-line {
+	font-size : 1.1em;
+	background-color : #e35d5d;
+	color : #FFFFFF;
+}
+
+.bottom-line {
+	font-size : 1.5em;
+	color : #FFFFFF;
+	background-color : #85e35d;
 }
 
 .operator {
+	font-size : 1.8em;
 	background-color : gray;
 	color : white;
+	background-color : #5dbbe3;
 }
 
 #numpad0 {
@@ -161,5 +195,21 @@
 #numpadReset {
 	grid-area : numpadReset;
 }
+
+#numpadLeftBracket {
+	grid-area : numpadLeftBracket;
+}
+
+#numpadRightBracket {
+	grid-area : numpadRightBracket;
+}
+
+.author {
+	text-decoration : none;
+	color : #FFFFFF;
+	font-family: 'Nova Square', cursive;
+	text-align : center;
+}
+
 
 
