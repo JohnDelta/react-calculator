@@ -9,11 +9,23 @@
 .App {
 	overflow : hidden;
 	width : 100vw;
+	max-width : 410px;
 	height : 100vh;
 	display : grid;
+	grid-template-columns : 98%;
 	grid-template-rows : 40% 55% auto;
+	justify-content : center;
 	background-color : #333333;
 	grid-row-gap : 4px;
+}
+
+@media only screen and (min-width : 768px) {
+	.App {
+		min-width : 550px;
+		min-height : 600px;
+		width : 60vw;
+		height : 70vh;
+	}
 }
 
 .Display {
@@ -209,6 +221,7 @@
 	color : #FFFFFF;
 	font-family: 'Nova Square', cursive;
 	text-align : center;
+	align-self : center;
 }
 
 
