@@ -37,37 +37,43 @@ export default function getDefaultNumpad() {
 				"id" : "numpadEval",
 				"value" : "=",
 				"symbol" : "=",
-				"class" : "bottom-line"
+				"class" : "second-line"
 			},
 			{
 				"id" : "numpadLeftArrow",
 				"value" : "leftArrow",
 				"symbol" : <i className="fa fa-arrow-left" />,
-				"class" : "top-line"
+				"class" : "first-line"
 			},
 			{
 				"id" : "numpadRightArrow",
 				"value" : "rightArrow",
 				"symbol" : <i className="fa fa-arrow-right" />,
-				"class" : "top-line"
+				"class" : "first-line"
 			},
 			{
 				"id" : "numpadReset",
 				"value" : "reset",
 				"symbol" : "c",
-				"class" : "bottom-line"
+				"class" : "first-line"
 			},
 			{
 				"id" : "numpadLeftBracket",
 				"value" : "(",
 				"symbol" : "(",
-				"class" : "top-line"
+				"class" : "second-line"
 			},
 			{
 				"id" : "numpadRightBracket",
 				"value" : ")",
 				"symbol" : ")",
-				"class" : "top-line"
+				"class" : "second-line"
+			},
+			{
+				"id" : "numpadBackspace",
+				"value" : "backspace",
+				"symbol" : "<=",
+				"class" : "first-line"
 			}
 		];
 	for(let i = 0; i < 10; i++) {

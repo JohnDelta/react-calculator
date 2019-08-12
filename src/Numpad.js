@@ -14,6 +14,7 @@ class Numpad extends React.Component {
 			else it only updates the ans field.
 		*/
 		this.solve = this.solve.bind(this);
+		this.checkInput = this.checkInput.bind(this);
 	}
 	
 	handleClick(e) {
@@ -44,20 +45,12 @@ class Numpad extends React.Component {
 				let current = [numpad.symbol];
 				let right = previousDisplay
 					.slice(this.props.cursorPos,previousDisplay.length);
-				let res = [...left, ...current, ...right];
+				let nextDisplay = [...left, ...current, ...right];
 				this.props.moveCursor(false); //move cursor right
 				
-				/*
-					Before you update input,
-					make sure the input expression will stay in the correct form.
-					Check  its operators if they are in a correct place.
-					They cannot be two or more together one next to another.
-				*/
-				let reg = /[-+\u00d7\u00f7 ]/;
-				if(!(reg.test(res[res.length-1]) && reg.test(previousDisplay[previousDisplay.length-1]))) {
-					this.props.updateDisplay(res);
-					this.solve(res,false);
-					
+				if(this.checkInput(previousDisplay,nextDisplay)) {
+					this.props.updateDisplay(nextDisplay);
+					this.solve(nextDisplay,false);
 					this.props.updateAns("");
 				} else this.props.updateAns("ha! ha! nope..");
 					
@@ -65,12 +58,34 @@ class Numpad extends React.Component {
 		}
 	}
 	
+	checkInput(previousInput, nextInput) {
+		let update = true;
+		let previous = previousInput.join("").match(/([0-9]+[\.]?[0-9]*[-+\u00d7\u00f7 ]?)$/);
+		let next = nextInput.join("").match(/([0-9]+[\.]?[0-9]*[-+\u00d7\u00f7 ]?)$/);
+		
+		let regs = [
+			/[-+\u00d7\u00f7 ]/, //no more than one operator together
+			/[.]?[0-9]+[.]/ //no more than one dot per number
+		];
+		
+		regs.forEach((reg,index) => {
+			if(reg.test(previous) && reg.test(next)) {
+				update = false;
+			}
+		});
+		 
+		console.log("previous : "+previous);
+		console.log("next : "+next);
+		
+		return update;
+	}
+	
 	solve(input,updateAns) {
 		let str = [...input].join("").replace(/[\u00f7]/g,"/")
 			.replace(/[\u00d7]/g,"*");
 		
 		
-		console.log(str);
+		//console.log(str);
 	}
 	
 	render() {
