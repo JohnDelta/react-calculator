@@ -35,17 +35,29 @@ class Numpad extends React.Component {
 			case "=" :
 				this.solve(this.props.displayText,true);
 				break;
+			case "backspace" :
+				var previousDisplay = [...this.props.displayText];
+				var left = previousDisplay.slice(0,this.props.cursorPos-1);
+				if(this.props.cursorPos === 0) left = [];
+				var right = previousDisplay
+					.slice(this.props.cursorPos,previousDisplay.length);
+				var nextDisplay = [...left, ...right];
+				this.props.moveCursor(true);
+				this.props.updateDisplay(nextDisplay);
+				this.solve(nextDisplay,false);
+				
+				break;
 			default :
-				let previousDisplay = [...this.props.displayText];
+				var previousDisplay = [...this.props.displayText];
 				/*
 					Insert each given value in the position of the cursor.
 					Then, move the cursor one index down(right).
 				*/
-				let left = previousDisplay.slice(0,this.props.cursorPos);
-				let current = [numpad.symbol];
-				let right = previousDisplay
+				var left = previousDisplay.slice(0,this.props.cursorPos);
+				var current = [numpad.symbol];
+				var right = previousDisplay
 					.slice(this.props.cursorPos,previousDisplay.length);
-				let nextDisplay = [...left, ...current, ...right];
+				var nextDisplay = [...left, ...current, ...right];
 				this.props.moveCursor(false); //move cursor right
 				
 				if(this.checkInput(nextDisplay)) {
@@ -81,6 +93,7 @@ class Numpad extends React.Component {
 		
 		try {
 			ans = eval(str);
+			if(ans === undefined) ans="";
 		} catch(e) {
 			valid = false;
 		}
