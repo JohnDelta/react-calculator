@@ -48,7 +48,7 @@ class Numpad extends React.Component {
 				let nextDisplay = [...left, ...current, ...right];
 				this.props.moveCursor(false); //move cursor right
 				
-				if(this.checkInput(previousDisplay,nextDisplay)) {
+				if(this.checkInput(nextDisplay)) {
 					this.props.updateDisplay(nextDisplay);
 					this.solve(nextDisplay,false);
 					this.props.updateAns("");
@@ -58,26 +58,20 @@ class Numpad extends React.Component {
 		}
 	}
 	
-	checkInput(previousInput, nextInput) {
-		let update = true;
-		let previous = previousInput.join("").match(/([0-9]+[\.]?[0-9]*[-+\u00d7\u00f7 ]?)$/);
-		let next = nextInput.join("").match(/([0-9]+[\.]?[0-9]*[-+\u00d7\u00f7 ]?)$/);
-		
-		let regs = [
-			/[-+\u00d7\u00f7 ]/, //no more than one operator together
-			/[.]?[0-9]+[.]/ //no more than one dot per number
-		];
-		
-		regs.forEach((reg,index) => {
-			if(reg.test(previous) && reg.test(next)) {
-				update = false;
-			}
-		});
-		 
-		console.log("previous : "+previous);
-		console.log("next : "+next);
-		
-		return update;
+	checkInput(newInput) {
+		let input = newInput.join("");
+		let valid = true;
+		/*
+			Regex which recognizes valid arithmetic expressions.
+			34.34 - 3 + 0.12 + 1 + 0 - is valid.
+			003 + 23 - - is not.
+			
+			reg : ^((([1-9][0-9]*|[0])([.][0-9]+)?)[+-])*((([0]|[1-9][0-9]*)[+-.]?)|(([1-9][0-9]*|[0])([.][0-9]+)?))?$
+		*/
+		console.log(newInput);
+		let reg = /^((([1-9][0-9]*|[0])([.][0-9]+)?)[+-])*((([0]|[1-9][0-9]*)[+-.]?)|(([1-9][0-9]*|[0])([.][0-9]+)?))?$/g;
+		valid = reg.test(input);
+		return valid;
 	}
 	
 	solve(input,updateAns) {
