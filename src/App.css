@@ -11,6 +11,7 @@
 	width : 100vw;
 	max-width : 410px;
 	height : 100vh;
+	min-height : 500px;
 	display : grid;
 	grid-template-columns : 98%;
 	grid-template-rows : 40% 55% auto;
@@ -21,10 +22,7 @@
 
 @media only screen and (min-width : 768px) {
 	.App {
-		min-width : 550px;
-		min-height : 600px;
-		width : 60vw;
-		height : 70vh;
+		max-height : 900px;
 	}
 }
 
@@ -98,10 +96,10 @@
 	-o-transition-duration : .3s;
 	transition-duration : .3s;
 	
-	-webkit-transform : scale(.8);
-	-moz-transform : scale(.8);
-	-o-transform : scale(.8);
-	transform : scale(.8);
+	-webkit-transform : scale(.9);
+	-moz-transform : scale(.9);
+	-o-transform : scale(.9);
+	transform : scale(.9);
 }
 
 .Numpad button i {
