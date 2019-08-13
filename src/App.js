@@ -24,6 +24,7 @@ class App extends React.Component {
 		this.moveCursor = this.moveCursor.bind(this);
 		this.reset = this.reset.bind(this);
 		this.updateAns = this.updateAns.bind(this);
+		this.showError = this.showError.bind(this);
 	}
 	
 	reset() {
@@ -63,6 +64,16 @@ class App extends React.Component {
 		}
 	}
 	
+	showError() {
+		if(this.state.displayText !== "Syntax Error") {
+			let t = this.state.displayText;
+			this.updateDisplay("Syntax Error");
+			setTimeout(()=>{
+				this.updateDisplay(t);
+			},1000);
+		}
+	}
+	
 	render() {
 		return (
 			<div className="App">
@@ -78,6 +89,7 @@ class App extends React.Component {
 					updateDisplay={this.updateDisplay}
 					updateAns={this.updateAns}
 					reset={this.reset}
+					showError={this.showError}
 				/>
 				<a 
 					className="author"

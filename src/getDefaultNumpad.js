@@ -54,7 +54,7 @@ export default function getDefaultNumpad() {
 			{
 				"id" : "numpadReset",
 				"value" : "reset",
-				"symbol" : "c",
+				"symbol" : "C",
 				"class" : "first-line"
 			},
 			{
@@ -72,7 +72,7 @@ export default function getDefaultNumpad() {
 			{
 				"id" : "numpadBackspace",
 				"value" : "backspace",
-				"symbol" : "<=",
+				"symbol" : "\u232b",
 				"class" : "first-line"
 			}
 		];

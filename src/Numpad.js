@@ -51,8 +51,7 @@ class Numpad extends React.Component {
 				if(this.checkInput(nextDisplay)) {
 					this.props.updateDisplay(nextDisplay);
 					this.solve(nextDisplay,false);
-					this.props.updateAns("");
-				} else this.props.updateAns("ha! ha! nope..");
+				}
 					
 				break;
 		}
@@ -67,19 +66,35 @@ class Numpad extends React.Component {
 			003 + 23 - - is not.
 			
 			reg : ^((([1-9][0-9]*|[0])([.][0-9]+)?)[+-])*((([0]|[1-9][0-9]*)[+-.]?)|(([1-9][0-9]*|[0])([.][0-9]+)?))?$
+			reg (with parenthesis) : ^([()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*[+-][()]*)*(([()]*([0]|[1-9][0-9]*)[()]*[+-.]?[()]*)|[()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*)?$
 		*/
-		console.log(newInput);
-		let reg = /^((([1-9][0-9]*|[0])([.][0-9]+)?)[+-])*((([0]|[1-9][0-9]*)[+-.]?)|(([1-9][0-9]*|[0])([.][0-9]+)?))?$/g;
+		let reg = /^([()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*[+-][()]*)*(([()]*([0]|[1-9][0-9]*)[()]*[+-.]?[()]*)|[()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*)?$/g;
 		valid = reg.test(input);
 		return valid;
 	}
 	
 	solve(input,updateAns) {
+		let valid = true;
 		let str = [...input].join("").replace(/[\u00f7]/g,"/")
 			.replace(/[\u00d7]/g,"*");
+		let ans = "";
 		
+		try {
+			ans = eval(str);
+		} catch(e) {
+			valid = false;
+		}
 		
-		//console.log(str);
+		if(valid) {
+			this.props.updateAns(ans);
+		}
+		if(updateAns) {
+			if(valid) {
+				this.props.updateDisplay(ans.toString());
+			} else {
+				this.props.showError();
+			}
+		}
 	}
 	
 	render() {

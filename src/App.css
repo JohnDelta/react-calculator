@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Black+Ops+One|Nova+Square|Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Patua+One|Black+Ops+One|Nova+Square|Press+Start+2P&display=swap');
 
 /*
 	font-family: 'Press Start 2P', cursive; - display output
-	font-family: 'Black Ops One', cursive; - buttons
+	font-family: 'Patua One', cursive; - buttons
 	font-family: 'Nova Square', cursive; - Author - credits
 */
 
@@ -83,7 +83,7 @@
 
 .Numpad button {
 	border : none;
-	font-family: 'Black Ops One', cursive;
+	font-family: 'Patua One', cursive;
 	outline : none;
 	cursor : pointer;
 	-webkit-transition-duration : .3s;
