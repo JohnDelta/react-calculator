@@ -25,6 +25,7 @@ class App extends React.Component {
 		this.reset = this.reset.bind(this);
 		this.updateAns = this.updateAns.bind(this);
 		this.showError = this.showError.bind(this);
+		this.updateCursor = this.updateCursor.bind(this);
 	}
 	
 	reset() {
@@ -32,6 +33,12 @@ class App extends React.Component {
 			displayText : "",
 			ans : "",
 			cursorPos : 0
+		});
+	}
+	
+	updateCursor(pos) {
+		this.setState({
+			cursorPos : pos
 		});
 	}
 	
@@ -66,10 +73,13 @@ class App extends React.Component {
 	
 	showError() {
 		if(this.state.displayText !== "Syntax Error") {
+			let p = this.state.cursorPos;
 			let t = this.state.displayText;
 			this.updateDisplay("Syntax Error");
+			this.updateCursor(0);
 			setTimeout(()=>{
 				this.updateDisplay(t);
+				this.updateCursor(p);
 			},1000);
 		}
 	}
@@ -90,6 +100,7 @@ class App extends React.Component {
 					updateAns={this.updateAns}
 					reset={this.reset}
 					showError={this.showError}
+					updateCursor={this.updateCursor}
 				/>
 				<a 
 					className="author"

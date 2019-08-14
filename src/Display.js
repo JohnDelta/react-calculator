@@ -1,10 +1,6 @@
 import React from 'react';
 
 class Display extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	
 	render() {
 		/*
 			Transform the text to an array and put a symbol

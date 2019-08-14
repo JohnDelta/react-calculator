@@ -20,6 +20,7 @@ class Numpad extends React.Component {
 	handleClick(e) {
 		let numpad = this.state.numpads.filter( (item) => {
 			if(item.id === e.target.id) return item;
+			else return undefined;
 		})[0];
 		
 		switch(numpad.value) {
@@ -48,16 +49,16 @@ class Numpad extends React.Component {
 				
 				break;
 			default :
-				var previousDisplay = [...this.props.displayText];
+				previousDisplay = [...this.props.displayText];
 				/*
 					Insert each given value in the position of the cursor.
 					Then, move the cursor one index down(right).
 				*/
-				var left = previousDisplay.slice(0,this.props.cursorPos);
+				left = previousDisplay.slice(0,this.props.cursorPos);
 				var current = [numpad.symbol];
-				var right = previousDisplay
+				right = previousDisplay
 					.slice(this.props.cursorPos,previousDisplay.length);
-				var nextDisplay = [...left, ...current, ...right];
+				nextDisplay = [...left, ...current, ...right];
 				this.props.moveCursor(false); //move cursor right
 				
 				if(this.checkInput(nextDisplay)) {
@@ -70,25 +71,24 @@ class Numpad extends React.Component {
 	}
 	
 	checkInput(newInput) {
-		let input = newInput.join("");
+		let input = [...newInput].join("").replace(/[\u00f7]/g,"/").replace(/[\u00d7]/g,"*");
 		let valid = true;
 		/*
 			Regex which recognizes valid arithmetic expressions.
 			34.34 - 3 + 0.12 + 1 + 0 - is valid.
 			003 + 23 - - is not.
 			
-			reg : ^((([1-9][0-9]*|[0])([.][0-9]+)?)[+-])*((([0]|[1-9][0-9]*)[+-.]?)|(([1-9][0-9]*|[0])([.][0-9]+)?))?$
-			reg (with parenthesis) : ^([()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*[+-][()]*)*(([()]*([0]|[1-9][0-9]*)[()]*[+-.]?[()]*)|[()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*)?$
+			reg : ^([()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*[+-][()]*)*(([()]*([0]|[1-9][0-9]*)[()]*[+-.]?[()]*)|[()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*)?$
+			reg : ^[()]*[+-]?([()+\-/*]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*[+\-/*][()]*)*(([()+\-/*]*([0]|[1-9][0-9]*)[()]*[*\-/+.]?[()]*)|[*()+\-/]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*)?$
 		*/
-		let reg = /^([()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*[+-][()]*)*(([()]*([0]|[1-9][0-9]*)[()]*[+-.]?[()]*)|[()]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*)?$/g;
+		let reg = /^[()]*[+-]?([()+\-/*]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*[+\-/*][()]*)*(([()+\-/*]*([0]|[1-9][0-9]*)[()]*[*\-/+.]?[()]*)|[*()+\-/]*(([1-9][0-9]*|[0])([.][0-9]+)?)[()]*)?$/g;
 		valid = reg.test(input);
 		return valid;
 	}
 	
 	solve(input,updateAns) {
 		let valid = true;
-		let str = [...input].join("").replace(/[\u00f7]/g,"/")
-			.replace(/[\u00d7]/g,"*");
+		let str = [...input].join("").replace(/[\u00f7]/g,"/").replace(/[\u00d7]/g,"*");
 		let ans = "";
 		
 		try {
@@ -104,6 +104,7 @@ class Numpad extends React.Component {
 		if(updateAns) {
 			if(valid) {
 				this.props.updateDisplay(ans.toString());
+				this.props.updateCursor(ans.toString().length);
 			} else {
 				this.props.showError();
 			}
